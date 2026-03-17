@@ -26,21 +26,22 @@ public class OrdemServicoService {
         os.setDataAbertura(OffsetDateTime.now());
 
         OrdemServico osSalva = osRepository.save(os);
+
         registrarHistorico(osSalva, osSalva.getTecnico(), null);
 
         return osSalva;
-
-        registrarHistorico(os, novoTecnico, atendenteQueAlterou);
     }
 
     @Transactional
     public void reatribuir(UUID osId, Usuario novoTecnico, Usuario atendenteQueAlterou) {
-        OrdemServico os = osRepository.findByid(osId)
+        OrdemServico os = osRepository.findById(osId)
                 .orElseThrow(() -> new RuntimeException("Ordem de Serviço não encontrada"));
 
         if (!os.getTecnico().equals(novoTecnico)) {
             os.setTecnico(novoTecnico);
             osRepository.save(os);
+
+            registrarHistorico(os, novoTecnico, atendenteQueAlterou);
         }
     }
 
@@ -49,15 +50,15 @@ public class OrdemServicoService {
         OrdemServico os = osRepository.findById(osId)
                 .orElseThrow(() -> new RuntimeException("OS não encontrada"));
 
-
         if (assinaturaBase64 == null || assinaturaBase64.isEmpty()) {
             throw new RuntimeException("A assinatura do cliente é obrigatória para finalizar.");
         }
 
+
         os.setLaudoTecnico(laudo);
         os.setAssinaturaCliente(assinaturaBase64);
-        os.setLaudoTecnico(StatusOrdemServico.CONCLUIDA);
-        os.setLaudoTecnico(OffsetDateTime.now());
+        os.setStatus(StatusOrdemServico.CONCLUIDA);
+        os.setDataFechamento(OffsetDateTime.now());
 
         osRepository.save(os);
     }

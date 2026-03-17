@@ -33,12 +33,12 @@ public class OrdemServico {
     private String descricao;
 
     @Column(columnDefinition = "TEXT")
-    private
+    private String laudoTecnico;
 
     private BigDecimal valorTotal;
 
     @Lob
-    @Column(columnDefintion = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String assinaturaCliente;
 
     private OffsetDateTime dataAbertura;

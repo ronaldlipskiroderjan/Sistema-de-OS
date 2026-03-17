@@ -6,13 +6,13 @@ import lombok.EqualsAndHashCode;
 import java.util.UUID;
 
 @Data
-@EqualsAndHashCode(OnlyExplicitlyIncluded = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = false)
 @Entity
 @Table(name = "cliente")
 public class Cliente {
 
     @Id
-    @GeratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private UUID id;
 

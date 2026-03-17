@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface HistoricoAtribuicaoRepository extends JpaRepository<HistoricoAtribuicao, UUID> {
     // Para auditar todas as trocas de técnico de uma OS específica
-    List<HistoricoAtribuicao> findByOrdemServicoIdOrdemByDataAlteracaoDesc(UUID osId);
+    List<HistoricoAtribuicao> findByOrdemServicoIdOrderByDataAlteracaoDesc(UUID osId);
 }

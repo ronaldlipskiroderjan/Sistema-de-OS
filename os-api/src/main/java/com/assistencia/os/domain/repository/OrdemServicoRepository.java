@@ -16,5 +16,5 @@ public interface OrdemServicoRepository extends JpaRepository<OrdemServico, UUID
     // Para o escritório filtrar por status
     List<OrdemServico> findByStatus(StatusOrdemServico status);
     // Para buscar OS de um cliente específico
-    List<OrdemServico> findBylienteId(UUID clienteId);
+    List<OrdemServico> findByClienteId(UUID clienteId);
 }
