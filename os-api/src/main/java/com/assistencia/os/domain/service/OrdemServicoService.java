@@ -50,6 +50,10 @@ public class OrdemServicoService {
         OrdemServico os = osRepository.findById(osId)
                 .orElseThrow(() -> new RuntimeException("OS não encontrada"));
 
+        if (StatusOrdemServico.CONCLUIDA.equals(os.getStatus()) || StatusOrdemServico.CANCELADA.equals(os.getStatus())) {
+            throw new RuntimeException("Operação negada: Esta Ordem de Serviço já está " + os.getStatus() + ".");
+        }
+
         if (assinaturaBase64 == null || assinaturaBase64.isEmpty()) {
             throw new RuntimeException("A assinatura do cliente é obrigatória para finalizar.");
         }
