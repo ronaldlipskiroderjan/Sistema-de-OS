@@ -11,10 +11,8 @@ import java.util.UUID;
 
 @Repository
 public interface OrdemServicoRepository extends JpaRepository<OrdemServico, UUID> {
-    // Para o técnico ver apenas as OS dele que ainda não foram concluídas
-    List<OrdemServico> findByTecnicoAndStatus(Usuario tecnico, StatusOrdemServico status);
-    // Para o escritório filtrar por status
+    List<OrdemServico> findByTecnicoId(UUID tecnicoId);
+
     List<OrdemServico> findByStatus(StatusOrdemServico status);
-    // Para buscar OS de um cliente específico
-    List<OrdemServico> findByClienteId(UUID clienteId);
 }
+
