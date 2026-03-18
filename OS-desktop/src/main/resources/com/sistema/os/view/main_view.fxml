@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f4f7f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistema.os.controller.MainController">
+    <children>
+        <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #2c3e50;" text="Gestão de Ordens de Serviço" />
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <TextField fx:id="campoPesquisa" prefWidth="300.0" promptText="🔍 Buscar por cliente ou descrição..." style="-fx-background-radius: 20; -fx-padding: 8 15; -fx-border-color: #bdc3c7; -fx-border-radius: 20;" />
+
+                        <Button mnemonicParsing="false" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 5;" text="+ Nova OS" />
+                    </children>
+                </HBox>
+
+                <TableView fx:id="tabelaOS" VBox.vgrow="ALWAYS" style="-fx-background-radius: 5; -fx-border-radius: 5;">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="100.0" text="ID" />
+                        <TableColumn fx:id="colCliente" prefWidth="250.0" text="Cliente" />
+                        <TableColumn fx:id="colDescricao" prefWidth="300.0" text="Descrição" />
+                        <TableColumn fx:id="colStatus" prefWidth="120.0" text="Status" />
+                        <TableColumn fx:id="colValor" prefWidth="100.0" text="Valor (R$)" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <children>
+                        <Label text="Sistema Integrado v1.0" style="-fx-text-fill: #bdc3c7;" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
